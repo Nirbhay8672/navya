@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .ie-panel {
+            display: none;
+            background: #212121;
+            padding: 10px 0;
+            box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3);
+            clear: both;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        html.ie-10 .ie-panel,
+        html.lt-ie-10 .ie-panel {
+            display: block;
+        }
+
+        /* Logo + Navya text — matches theme link / dark-bar colors */
+        .brand-navya-lockup {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            flex-wrap: nowrap;
+            max-width: 100%;
+        }
+
+        .brand-navya-text {
+            font-family: Calibri, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.05rem, 2.8vw, 1.65rem);
+            line-height: 1.1;
+            color: #0C1451;
+            letter-spacing: 0.02em;
+        }
+
+        .context-dark .brand-navya-text,
+        .bg-gray-700 .brand-navya-text,
+        .bg-primary .brand-navya-text {
+            color: #ffffff;
+        }
+
+        .brand-navya .brand-logo-dark,
+        .brand-navya .brand-logo-light {
+            display: block;
+            height: auto;
+            width: auto;
+            max-height: 52px;
+            flex-shrink: 0;
+        }
+
+        .rd-navbar-classic.rd-navbar-static .rd-navbar-brand .brand-navya img.brand-logo-dark,
+        .rd-navbar-classic.rd-navbar-static .rd-navbar-brand .brand-navya img.brand-logo-light {
+            max-height: 52px;
+            width: auto;
+        }
+
+        .rd-navbar-fixed .brand-navya .brand-logo-dark,
+        .rd-navbar-fixed .brand-navya .brand-logo-light {
+            max-height: 44px;
+            max-width: 120px;
+        }
+
+        @media (max-width: 575.98px) {
+            .brand-navya-lockup {
+                gap: 0.25rem;
+            }
+
+            .brand-navya-text {
+                font-size: 1rem;
+            }
+
+            .rd-navbar-fixed .brand-navya .brand-logo-dark,
+            .rd-navbar-fixed .brand-navya .brand-logo-light {
+                max-height: 38px;
+                max-width: 100px;
+            }
+        }
+
+        /* Mobile / tablet: center logo; keep panel position:fixed (do not use relative — it breaks sticky header) */
+        @media (max-width: 991.98px) {
+            .rd-navbar-fixed .rd-navbar-panel {
+                justify-content: flex-start;
+            }
+
+            .rd-navbar-fixed .rd-navbar-toggle {
+                position: relative;
+                z-index: 2;
+                flex: 0 0 auto;
+            }
+
+            .rd-navbar-fixed .rd-navbar-brand {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                margin-left: 0 !important;
+                width: auto;
+                max-width: min(280px, calc(100vw - 112px));
+                text-align: center;
+                overflow: visible;
+                white-space: nowrap;
+                line-height: 1;
+            }
+
+            .rd-navbar-fixed .rd-navbar-brand .brand {
+                display: inline-block;
+                margin: 0 auto;
+            }
+
+            .rd-navbar-fixed .rd-navbar-brand .brand-navya-lockup {
+                justify-content: center;
+            }
+        }
+
+        .whatsapp-hero-wrap {
+            align-items: center;
+        }
+
+        .whatsapp-hero-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #128C7E;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .whatsapp-hero-link:hover,
+        .whatsapp-hero-link:focus {
+            color: #075E54;
+            text-decoration: none;
+        }
+
+        .whatsapp-hero-link svg {
+            flex-shrink: 0;
+        }
+
+        .location-wrap {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #0C1451;
+            font-weight: 600;
+        }
+
+        .location-wrap svg {
+            flex-shrink: 0;
+        }
+
+        .about-main-img {
+            border-radius: 10px;
+            width: 100%;
+            height: auto;
+            border: 5px solid #540704;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Rounded images with full space - desktop and mobile */
+        .box-minimal .box-minimal-icon {
+            height: 150px;
+            width: 150px;
+        }
+
+        .box-minimal .box-minimal-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        @media (max-width: 991.98px) {
+            /* Global mobile centering for all content */
+            .section {
+                text-align: center;
+            }
+
+            .section .container {
+                text-align: center;
+            }
+
+            .section .row {
+                justify-content: center;
+            }
+
+            .section .btn-wrap {
+                display: flex;
+                justify-content: center;
+            }
+
+            .section .group-middle {
+                justify-content: center;
+            }
+
+            .section .group-xl {
+                justify-content: center;
+            }
+
+            .section .text-center {
+                text-align: center;
+            }
+
+            .section .text-lg-right {
+                text-align: center;
+            }
+
+            .section .text-lg-left {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="preloader">
+        <div class="preloader-body">
+            <div class="cssload-container">
+                <div class="cssload-speeding-wheel"></div>
+            </div>
+            <p>Loading...</p>
+        </div>
+    </div>
+    <div class="page">
+        <header class="section page-header">
+            <div class="rd-navbar-wrap">
+                <nav class="rd-navbar rd-navbar-classic" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed"
+                    data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed"
+                    data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static"
+                    data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static"
+                    data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="46px"
+                    data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+                    <div class="rd-navbar-main-outer">
+                        <div class="rd-navbar-main">
+                            <!--RD Navbar Panel-->
+                            <div class="rd-navbar-panel">
+                                <!--RD Navbar Toggle-->
+                                <button class="rd-navbar-toggle"
+                                    data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                                <!--RD Navbar Brand-->
+                                <div class="rd-navbar-brand">
+                                    <a class="brand brand-navya" href="index.html">
+                                        <span class="brand-navya-lockup">
+                                            <img class="brand-logo-dark" src="images/logo.jpg" alt="Navya" width="160"
+                                                height="52" />
+                                            <span class="brand-navya-text" lang="gu">Navya Beauty Care</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="rd-navbar-main-element">
+                                <div class="rd-navbar-nav-wrap">
+                                    <ul class="rd-navbar-nav">
+                                        <li class="rd-nav-item active"><a class="rd-nav-link" href="index.html">Home</a>
+                                        </li>
+                                        <li class="rd-nav-item"><a class="rd-nav-link" href="about.html">About</a>
+                                        </li>
+                                        <li class="rd-nav-item"><a class="rd-nav-link" href="gallery.html">Gallery</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="rd-nav-item">
+                                <div class="btn-wrap"><a class="button button-secondary button-sm" target="_blank"
+                                        rel="noopener noreferrer"
+                                        href="https://wa.me/919737246932?text=Hello%20I%20need%20to%20book%20an%20appointment">Book</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div class="section section section-lg mt-5">
+            <div class="container wide">
+                <div class="text-center">
+                    <div class="subtitle">Welcome to Our Beauty Care Studio</div>
+                    <div class="subtitle-2">At our beauty studio, we believe that every individual deserves to feel confident, beautiful, and radiant. With a passion for beauty and a commitment to excellence, we offer a wide range of professional beauty services tailored to your unique style and needs.</div>
+                </div>
+            </div>
+            <div class="container wide">
+                <div class="text-center">
+                    <div class="subtitle">Our Mission</div>
+                    <div class="subtitle-2">Our mission is to provide exceptional beauty services that make our clients feel confident and satisfied. We focus on quality, hygiene, and personalized care to ensure the best experience every time you visit us.</div>
+                </div>
+            </div>
+            <div class="container wide">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-11">
+                        <img src="images/beauty/Navya.jpg" alt="" class="about-main-img">
+                    </div>
+                </div>
+                <div class="row row-md-80 row-sm-50">
+                    <div class="col-xs-10 col-md-6 col-lg-3">
+                        <div class="box-info-modern">
+                            <div class="box-info-modern-figure"><img src="images/beauty/eyebrow.jpg" alt="" width="390"
+                                    height="344" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-10 col-md-6 col-lg-3">
+                        <div class="box-info-modern">
+                            <div class="box-info-modern-figure"><img src="images/beauty/hair-cut.jpg" alt="" width="390"
+                                    height="344" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-10 col-md-6 col-lg-3">
+                        <div class="box-info-modern">
+                            <div class="box-info-modern-figure"><img src="images/beauty/makup.jpg" alt="" width="390"
+                                    height="344" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-10 col-md-6 col-lg-3">
+                        <div class="box-info-modern">
+                            <div class="box-info-modern-figure"><img src="images/beauty/hair-wash.jpg" alt=""
+                                    width="390" height="344" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-10 col-md-6 col-lg-3">
+                        <div class="box-info-modern">
+                            <div class="box-info-modern-figure"><img src="images/beauty/mehndi.jpg" alt="" width="390"
+                                    height="344" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-10 col-md-6 col-lg-3">
+                        <div class="box-info-modern">
+                            <div class="box-info-modern-figure"><img src="images/beauty/nail.jpg" alt="" width="390"
+                                    height="344" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-10 col-md-6 col-lg-3">
+                        <div class="box-info-modern">
+                            <div class="box-info-modern-figure"><img src="images/beauty/straight.jpg" alt="" width="390"
+                                    height="344" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-10 col-md-6 col-lg-3">
+                        <div class="box-info-modern">
+                            <div class="box-info-modern-figure"><img src="images/beauty/wax.jpg" alt="" width="390"
+                                    height="344" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="section footer-classic context-dark">
+        <div class="container wide">
+            <div class="row row-sm-30">
+                <div class="col-lg-6">
+                    <div class="phone-wrap">
+                        <div class="group-md group-middle"><span class="phone-link">9737246932</span>
+                            <div class="phone-link">Bhumi Borkhatariya</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <a class="whatsapp-hero-link text-white"
+                        href="https://wa.me/919737246932?text=Hello%20I%20need%20to%20book%20an%20appointment"
+                        target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"
+                            aria-hidden="true">
+                            <path fill="white"
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+            <div class="list-wrapper">
+                <div class="row row-sm-30">
+                    <div class="col-sm-4 col-md-4 col-lg-6">
+                        <div class="location-wrap">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"
+                                aria-hidden="true">
+                                <path fill="white"
+                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                            </svg>
+                            <span class="text-white">Dolat Press St 4, Railway Station Area, Rayon Housing Society,
+                                Jobanpura,
+                                Veraval,
+                                Gujarat 362265</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-6">
+                        <iframe src="https://maps.google.com/maps?q=20.912716,70.368585&output=embed" width="100%"
+                            height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <p>Visit Us at Our Location</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+    <div class="snackbars" id="form-output-global"></div>
+    <script src="js/core.min.js"></script>
+    <script src="js/script.js"></script>
+    <!--coded by dyoma-->
+</body>
+
+</html>
