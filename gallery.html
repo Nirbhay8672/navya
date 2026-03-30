@@ -191,6 +191,14 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
+        /* Mobile: single image display */
+        @media (max-width: 767px) {
+            .gallery-item {
+                width: 100% !important;
+                margin: 10px 0;
+            }
+        }
+
         /* Rounded images with full space - desktop and mobile */
         .box-minimal .box-minimal-icon {
             height: 150px;
@@ -305,7 +313,7 @@
                 </nav>
             </div>
         </header>
-        <div class="section section section-lg mt-3">
+        <div class="section section section-lg mt-5">
             <div class="container wide">
                 <div class="container wide">
                     <div class="text-center">
@@ -403,10 +411,11 @@
             // Wait for images to load
             imagesLoaded(container, function() {
                 // Initialize Masonry
+                const isMobile = window.innerWidth <= 767;
                 new Masonry(container, {
                     itemSelector: '.gallery-item',
-                    columnWidth: 200,
-                    gutter: 10
+                    columnWidth: isMobile ? container.clientWidth : 200,
+                    gutter: isMobile ? 0 : 10
                 });
             });
         });
